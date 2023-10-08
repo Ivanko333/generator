@@ -5,17 +5,19 @@ import random
 
 
 class Main(QWidget):
+
     def __init__(self):
         super().__init__()
+        self.button = None
         self.set_appear()
         self.initUI()
+        self.connects()
 
 
     def set_appear(self):
         self.resize(500, 500)
         self.setWindowTitle('Генератор пароля')
         self.show()
-        self.connects()
 
     def initUI(self):
         txt = QLabel('Введите длинну пароля от 1 до 12:')
