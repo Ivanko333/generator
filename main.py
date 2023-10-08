@@ -10,16 +10,18 @@ class Main(QWidget):
         self.set_appear()
         self.initUI()
 
+
     def set_appear(self):
         self.resize(500, 500)
         self.setWindowTitle('Генератор пароля')
         self.show()
+        self.connects()
 
     def initUI(self):
         txt = QLabel('Введите длинну пароля от 1 до 12:')
         self.input1 = QLineEdit('...')
         self.button = QPushButton('Отправить')
-        self.result1 = QLabel(self.result)
+        self.result1 = QLabel('')
         v_line = QVBoxLayout()
         v_line.addWidget(txt, alignment=Qt.AlignLeft)
         v_line.addWidget(self.input1, alignment=Qt.AlignLeft)
@@ -32,7 +34,10 @@ class Main(QWidget):
         for i in range(self.input1):
             password = ''
             password += random.choice(chars)
-            return password
+            self.result1.setText(password)
+
+    def connects(self):
+        self.button.clicked.connect(self.result)
 
 
 app = QApplication([])
